@@ -24,7 +24,7 @@ def release(project){
     groupId = 'io.fabric8.apps'
     githubOrganisation = 'fabric8-apps'
     artifactIdToWatchInCentral = 'keycloak-app'
-    artifactExtensionToWatchInCentral = 'jar'
+    artifactExtensionToWatchInCentral = 'pom'
     promoteToDockerRegistry = 'docker.io'
     dockerOrganisation = 'fabric8'
     imagesToPromoteToDockerHub = []
