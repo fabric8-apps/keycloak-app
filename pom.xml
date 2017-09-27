@@ -71,6 +71,7 @@
 
   <properties>
     <fabric8.maven.plugin.version>3.5.1</fabric8.maven.plugin.version>
+    <dependency-wait-service.version>v6632df1</dependency-wait-service.version>
     <keycloak.version>v15751c8</keycloak.version>
     <maven.enforcer.plugin.version>1.4</maven.enforcer.plugin.version>
     <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
