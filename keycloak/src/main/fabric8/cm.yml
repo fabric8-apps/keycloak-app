@@ -65,7 +65,23 @@ data:
               }, {
               "name" : "admin:space"
             } ]
-          }
+          },
+          "protocolMappers" : [ {
+          {
+                "id" : "0dc3e03b-f0c3-4e7e-b0c9-d99c46ba9161",
+                "name" : "Approved",
+                "protocol" : "openid-connect",
+                "protocolMapper" : "oidc-usermodel-attribute-mapper",
+                "consentRequired" : false,
+                "config" : {
+                  "userinfo.token.claim" : "true",
+                  "user.attribute" : "approved",
+                  "id.token.claim" : "false",
+                  "access.token.claim" : "true",
+                  "claim.name" : "approved",
+                  "jsonType.label" : "boolean"
+                }
+          } ]
         },
         {
           "clientId": "che",
