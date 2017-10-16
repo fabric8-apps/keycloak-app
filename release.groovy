@@ -34,9 +34,9 @@ def release(project){
 
 def updateDownstreamDependencies(stagedProject) {
   pushPomPropertyChangePR {
-    propertyName = 'nexus-app.version'
+    propertyName = 'keycloak-app.version'
     projects = [
-            'fabric8-services/fabric8-tenant-jenkins',
+            'fabric8-jenkins/fabric8-jenkins-platform',
             'fabric8io/fabric8-platform'
     ]
     version = stagedProject[1]
