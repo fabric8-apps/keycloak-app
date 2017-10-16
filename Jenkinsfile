@@ -2,35 +2,30 @@
 @Library('github.com/fabric8io/fabric8-pipeline-library@master')
 def utils = new io.fabric8.Utils()
 
-releaseNode {
-  try {
-    checkout scm
-    readTrusted 'release.groovy'
+releaseNode {  
+  checkout scm
+  readTrusted 'release.groovy'
 
-    if (utils.isCI()) {
+  if (utils.isCI()) {
 
-      mavenCI{}
+    mavenCI{}
 
-    } else if (utils.isCD()) {
-      sh "git remote set-url origin git@github.com:fabric8-apps/keycloak-app.git"
+  } else if (utils.isCD()) {
+    sh "git remote set-url origin git@github.com:fabric8-apps/keycloak-app.git"
 
-      def pipeline = load 'release.groovy'
-      def stagedProject
+    def pipeline = load 'release.groovy'
+    def stagedProject
 
-      stage('Stage') {
-        stagedProject = pipeline.stage()
-      }
-
-      stage('Promote') {
-        pipeline.release(stagedProject)
-      }
-
-      stage ('Update downstream dependencies'){
-        pipeline.updateDownstreamDependencies(stagedProject)
-      }
+    stage('Stage') {
+      stagedProject = pipeline.stage()
     }
-  } catch (err) {
-    hubot room: 'release', message: "${env.JOB_NAME} failed: ${err}"
-    error "${err}"
+
+    stage('Promote') {
+      pipeline.release(stagedProject)
+    }
+
+    stage ('Update downstream dependencies'){
+      pipeline.updateDownstreamDependencies(stagedProject)
+    }
   }
 }
