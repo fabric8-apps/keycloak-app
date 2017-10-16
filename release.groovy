@@ -36,7 +36,8 @@ def updateDownstreamDependencies(stagedProject) {
   pushPomPropertyChangePR {
     propertyName = 'nexus-app.version'
     projects = [
-            'fabric8io/fabric8-tenant-jenkins'
+            'fabric8-services/fabric8-tenant-jenkins',
+            'fabric8io/fabric8-platform'
     ]
     version = stagedProject[1]
   }
